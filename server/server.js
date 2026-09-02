@@ -18,7 +18,6 @@ import roomRouter from "./routes/roomRoute.js";
 import bookingRouter from "./routes/bookingRoutes.js";
 import dashboardRouter from "./routes/dashboardRoutes.js";
 
-
 import {stripeWebhooks} from "./controllers/stripeWebhooks.js";
 import chatbotRouter from "./routes/chatbotRoutes.js";
 
@@ -41,6 +40,18 @@ app.post(
 
 app.use(express.json());
 app.use(clerkMiddleware());
+
+import cors from "cors";
+
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://stay-to-night.vercel.app",
+    ],
+    credentials: true,
+  })
+);
 
 app.get("/", (req, res) => {
   res.send("API Working");
