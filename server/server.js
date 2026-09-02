@@ -26,7 +26,7 @@ const app = express();
 await connectDB();
 connectCloudinary();
 
-app.use(cors()); // Enable Cross-origin resource sharing
+ 
 
 // Api to listen to stripe webhooks
 app.post("/api/stripe", express.raw({type:"application/json"}), stripeWebhooks);
@@ -41,7 +41,6 @@ app.post(
 app.use(express.json());
 app.use(clerkMiddleware());
 
-import cors from "cors";
 
 app.use(
   cors({
